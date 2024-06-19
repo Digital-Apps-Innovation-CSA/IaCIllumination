@@ -6,6 +6,6 @@ variable "serviceplan" {
   type = object({
     name     = string
     sku_name = string
-    capacity = number
+    size = string
   })
 }

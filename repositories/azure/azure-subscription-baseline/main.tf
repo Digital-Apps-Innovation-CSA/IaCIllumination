@@ -14,6 +14,6 @@ module "name-service-plan" {
     rgname = var.group_name
     location = var.location
     sku_name = var.serviceplan.sku_name
-    capacity = var.serviceplan.capacity
+    size = var.serviceplan.size
     depends_on = [ module.azure-resource-group ]
 }

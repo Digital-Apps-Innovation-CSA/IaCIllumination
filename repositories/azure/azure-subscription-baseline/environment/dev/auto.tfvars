@@ -8,6 +8,7 @@ tags        = {
 }
 serviceplan = {
   name     = "sprvrterraform001"
-  sku_name = "F1"
-  capacity = 1
+  sku_name = "Standard"
+  size = "S1"
+
 }
