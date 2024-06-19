@@ -33,7 +33,7 @@ Provider
 
 ### Tarea 1 
 1. Configurar los nombres de los valores en dev/auto.tvars para crear el grupo de recursos de ejemplo
-2. Subir los cambios al repositorio validar que el Workflo se ejecute y 
+2. Subir los cambios al repositorio validar que el Workflow se ejecute 
 
 ### Tarea 2
   1. Dentro del resource group genera 3 storage accounts
