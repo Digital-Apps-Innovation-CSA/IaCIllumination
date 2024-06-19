@@ -7,7 +7,7 @@ module "azure-resource-group" {
     location = var.location
     tags = var.tags
 }
-/*
+
 module "name-service-plan" {
     source = "../../../modules/azure/serviceplan"
     name = var.serviceplan.name
@@ -16,4 +16,4 @@ module "name-service-plan" {
     sku_name = var.serviceplan.sku_name
     capacity = var.serviceplan.capacity
     depends_on = [ module.azure-resource-group ]
-}*/
+}

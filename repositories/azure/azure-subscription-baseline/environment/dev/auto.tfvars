@@ -6,8 +6,8 @@ tags        = {
   owner       = "rvr"
   destination = "azure"
 }
-#serviceplan = {
-#  name     = "sprvrterraform001"
-#  sku_name = "F1"
-#  capacity = 1
-#}
+serviceplan = {
+  name     = "sprvrterraform001"
+  sku_name = "F1"
+  capacity = 1
+}
