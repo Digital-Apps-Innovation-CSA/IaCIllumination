@@ -20,5 +20,5 @@ variable "sku_name" {
 
 variable "size" {
   description = "The capacity of the service plan"
-  type        = number
+  type        = string
 }
