@@ -9,9 +9,9 @@
 ![image](https://github.com/Digital-Apps-Innovation-CSA/IaCIllumination/assets/62779771/20eb730a-e675-4803-8433-eb769700a66b)
 3. Agregar los siguientes secrets en el repositorio de github
    
-  ARM_CLIENT_ID 
-  ARM_SUBSCRIPTION_ID
-  ARM_TENANT_ID
+  AZURE_CLIENT_ID
+  AZURE_SUBSCRIPTION_ID
+  AZURE_TENANT_ID
   ARM_CLIENT_SECRET
 
   Settings / Secrets and Variables
