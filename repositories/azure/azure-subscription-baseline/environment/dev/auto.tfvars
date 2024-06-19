@@ -12,3 +12,11 @@ serviceplan = {
   size = "S1"
 
 }
+storage = {
+  name = "strvrterraform001"
+  account_tier = "Standard"
+  account_replication_type = "LRS"
+}
+functionapp = {
+  name = "functionrvri001"
+}

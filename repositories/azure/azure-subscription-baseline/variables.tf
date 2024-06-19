@@ -9,3 +9,16 @@ variable "serviceplan" {
     size = string
   })
 }
+variable "storage" {
+  type = object({
+    name = string
+    account_tier = string
+    account_replication_type = string
+  })
+}
+variable "functionapp" {
+  type = object({
+    name = string
+  })
+  
+}
