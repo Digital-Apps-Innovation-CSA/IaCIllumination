@@ -1,5 +1,5 @@
-group_name  = "rg_demos_tvr"
-location    = "eastus"
+group_name  = "rgdemomtcacademy001"
+location    = "mexicocentral"
 tags        = {
   environment = "dev"
   project     = "integration"

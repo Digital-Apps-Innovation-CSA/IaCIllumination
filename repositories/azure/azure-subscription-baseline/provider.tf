@@ -10,8 +10,8 @@ terraform {
     }
   }
     backend "azurerm" {
-      resource_group_name  = "testrvrdelete_group"
-      storage_account_name = "testrvrdeletegroupad35"
+      resource_group_name  = "rgdemo"
+      storage_account_name = "rvrdemotest01"
       container_name       = "tfsre"
       key                  = "terraform.tfstate"
     }
