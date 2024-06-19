@@ -5,7 +5,8 @@ terraform {
       version = ">= 3.75.0"
       }
     azapi = {
-      source = "Azure/azapi"      
+      source = "Azure/azapi"
+      version = ">= 1.9.0"
     }
   }
     backend "azurerm" {
@@ -19,3 +20,5 @@ provider "azurerm" {
   features {}
   skip_provider_registration = false
   }
+provider "azapi" {
+}
