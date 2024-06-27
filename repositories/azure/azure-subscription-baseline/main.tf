@@ -26,7 +26,7 @@ module "Subnet" {
     depends_on = [ module.VirtualNetwork ]
 }
 module "ip" {
-    source = "../../../modules/azure/publicIP"
+    source = "../../../modules/azure/publicIp"
     public_ip_name = var.public_ip_name
     location = var.location
     resource_group_name = var.group_name
@@ -63,7 +63,7 @@ module "vm" {
     source_image_publisher = var.source_image_publisher
     source_image_offer = var.source_image_offer
     source_image_sku = var.source_image_sku
-    source_image_version = var.version
+    source_image_version = var.source_image_version
     tags = var.tags
     depends_on = [ module.nic ]
 }
