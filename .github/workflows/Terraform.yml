@@ -49,7 +49,7 @@ jobs:
       run: |
         export exitcode=0
         terraform state rm
-        terraform plan -var group_name="tst_rvr_sa" -var-file="${{ inputs.evironmetTerraform }}/auto.tfvars" -detailed-exitcode -no-color -out tfplan || export exitcode=$?
+        terraform plan -var user="rvr0212" -var-file="${{ inputs.evironmetTerraform }}/auto.tfvars" -detailed-exitcode -no-color -out tfplan || export exitcode=$?
 
         echo "exitcode=$exitcode" >> $GITHUB_OUTPUT
         

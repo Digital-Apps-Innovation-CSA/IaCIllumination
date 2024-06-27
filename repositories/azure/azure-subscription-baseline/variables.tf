@@ -1,6 +1,7 @@
-variable "group_name" {
+variable "user" {
     type        = string
-    description = "Name of the resource group"
+    description = "user for the virtual machine"
+  
 }
 
 variable "location" {
@@ -13,10 +14,6 @@ variable "tags" {
     description = "Tags for the resources"
 }
 
-variable "virtual_network_name" {
-    type        = string
-    description = "Name of the virtual network"
-}
 
 variable "address_space" {
     type        = list(string)
@@ -33,20 +30,12 @@ variable "subnet_prefixes" {
     description = "Prefixes for the subnet"
 }
 
-variable "public_ip_name" {
-    type        = string
-    description = "Name of the public IP"
-}
 
 variable "public_ip_allocation_method" {
     type        = string
     description = "Allocation method for the public IP"
 }
 
-variable "nic_name" {
-    type        = string
-    description = "Name of the network interface"
-}
 
 variable "ip_configuration_name" {
     type        = string
@@ -58,25 +47,11 @@ variable "private_ip_address_allocation" {
     description = "Allocation method for the private IP"
 }
 
-variable "virtual_machine_name" {
-    type        = string
-    description = "Name of the virtual machine"
-}
-
 variable "vm_size" {
     type        = string
     description = "Size of the virtual machine"
 }
 
-variable "admin_username" {
-    type        = string
-    description = "Username for the virtual machine"
-}
-
-variable "admin_password" {
-    type        = string
-    description = "Password for the virtual machine"
-}
 
 variable "os_disk_caching" {
     type        = string
