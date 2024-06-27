@@ -8,34 +8,60 @@ module "azure-resource-group" {
     tags = var.tags
 }
 
-module "name-service-plan" {
-    source = "../../../modules/azure/serviceplan"
-    name = var.serviceplan.name
-    rgname = var.group_name
+module "VirtualNetwork" {
+    source = "../../../modules/azure/VirtualNetwork"
+    virtual_network_name = var.virtual_network_name
+    address_space = var.address_space
     location = var.location
-    sku_name = var.serviceplan.sku_name
-    size = var.serviceplan.size
+    resource_group_name = var.group_name
+    tags = var.tags
     depends_on = [ module.azure-resource-group ]
 }
-
-module "storage-account" {
-    source = "../../../modules/azure/storage-account"
-    resource_group_name  = var.group_name
+module "Subnet" {
+    source = "../../../modules/azure/Subnet"
+    subnet_name = var.subnet_name
+    resource_group_name = var.group_name
+    virtual_network_name = module.VirtualNetwork.virtual_network_name
+    subnet_prefixes = var.subnet_prefixes
+    depends_on = [ module.VirtualNetwork ]
+}
+module "ip" {
+    source = "../../../modules/azure/ip"
+    public_ip_name = var.public_ip_name
     location = var.location
-    account_tier = var.storage.account_tier
-    account_replication_type = var.storage.account_replication_type
-    name = var.storage.name
+    resource_group_name = var.group_name
+    public_ip_allocation_method = var.public_ip_allocation_method
+    tags = var.tags
     depends_on = [ module.azure-resource-group ]
   
 }
-
-module "functionapp" {
-    source = "../../../modules/azure/functionapp"
-    name = var.functionapp.name
-    resource_group_name = var.group_name
+module "nic" {
+    source = "../../../modules/azure/nic"
+    nic_name = var.nic_name
     location = var.location
-    app_service_plan_id = module.name-service-plan.service_plan_id
-    storage_account_name = module.storage-account.storage_account_name
-    storage_account_access_key = module.storage-account.primary_access_key
-    depends_on = [ module.azure-resource-group, module.name-service-plan, module.storage-account ]
+    resource_group_name = var.group_name
+    ip_configuration_name = var.ip_configuration_name
+    subnet_id = module.Subnet.subnet_id
+    private_ip_address_allocation = var.private_ip_address_allocation
+    public_ip_address_id = module.ip.public_ip_id
+    tags = var.tags
+    depends_on = [ module.Subnet,module.ip]
+  
+}
+module "vm" {
+    source = "../../../modules/azure/vm"
+    virtaul_machine_name = var.virtual_machine_name
+    location = var.location
+    resource_group_name = var.group_name
+    vm_size = var.vm_size
+    admin_username = var.admin_username
+    admin_password = var.admin_password
+    network_interface_ids = [module.nic.nic_id]
+    os_disk_caching = var.os_disk_caching
+    os_disk_storage_account_type = var.os_disk_storage_account_type
+    source_image_publisher = var.source_image_publisher
+    source_image_offer = var.source_image_offer
+    source_image_sku = var.source_image_sku
+    tags = var.tags
+    depends_on = [ module.nic ]
 }
