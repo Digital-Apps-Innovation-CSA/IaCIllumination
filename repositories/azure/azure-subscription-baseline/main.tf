@@ -34,7 +34,7 @@ module "ip" {
     public_ip_name = "PIP_${var.user}"
     location = var.location
     resource_group_name = "RG_${var.user}"
-    idle_timeout_in_minutes = var.private_ip_address_allocation
+    idle_timeout_in_minutes = var.idle_timeout_in_minutes
     allocation_method = var.public_ip_allocation_method
     tags = var.tags
     depends_on = [ module.azure-resource-group ]

@@ -83,3 +83,9 @@ variable "source_image_version" {
     description = "Version of the source image"
   
 }
+
+variable "idle_timeout_in_minutes" {
+    type        = number
+    description = "Idle timeout for the public IP"
+  
+}
