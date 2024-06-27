@@ -44,7 +44,7 @@ module "nic" {
     ip_configuration_name = var.ip_configuration_name
     subnet_id = module.Subnet.subnet_id
     private_ip_address_allocation = var.private_ip_address_allocation
-    public_ip_address_id = module.ip.public_ip_id
+    public_ip_address_id = module.ip.id
     tags = var.tags
     depends_on = [ module.Subnet,module.ip]
   
