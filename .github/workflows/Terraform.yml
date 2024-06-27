@@ -49,7 +49,7 @@ jobs:
       run: |
         export exitcode=0
         resources=$(terraform state list)
-        FOR %i IN ($resources) DO {
+        FOR %i IN (resources) DO {
           echo "Resource: %i"
         } 
 
