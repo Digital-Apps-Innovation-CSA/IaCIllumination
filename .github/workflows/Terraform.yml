@@ -40,7 +40,12 @@ jobs:
       working-directory: ${{ inputs.workingDirectory }}
       run: terraform init
 
-
+    - name: Remove all resources from Terraform state
+      working-directory: ${{ inputs.workingDirectory }}
+      run: |
+        for resource in $(terraform state list); do
+          terraform state rm "$resource"
+        done
     # Generates an execution plan for Terraform
     # An exit code of 0 indicated no changes, 1 a terraform failure, 2 there are pending changes.
     - name: Terraform Plan
@@ -48,11 +53,6 @@ jobs:
       working-directory: ${{ inputs.workingDirectory }}
       run: |
         export exitcode=0
-        resources=$(terraform state list)
-        FOR %i IN (resources) DO {
-          echo "Resource: %i"
-        } 
-
         terraform plan -var user="rvr0212" -var-file="${{ inputs.evironmetTerraform }}/auto.tfvars" -detailed-exitcode -no-color -out tfplan || export exitcode=$?
 
         echo "exitcode=$exitcode" >> $GITHUB_OUTPUT
