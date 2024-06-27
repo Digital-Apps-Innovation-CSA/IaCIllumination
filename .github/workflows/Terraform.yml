@@ -48,7 +48,7 @@ jobs:
       working-directory: ${{ inputs.workingDirectory }}
       run: |
         export exitcode=0
-        terraform plan -var-file="${{ inputs.evironmetTerraform }}/auto.tfvars" -detailed-exitcode -no-color -out tfplan || export exitcode=$?
+        terraform plan -var group_name="tst_rvr_sa" -var-file="${{ inputs.evironmetTerraform }}/auto.tfvars" -detailed-exitcode -no-color -out tfplan || export exitcode=$?
 
         echo "exitcode=$exitcode" >> $GITHUB_OUTPUT
         

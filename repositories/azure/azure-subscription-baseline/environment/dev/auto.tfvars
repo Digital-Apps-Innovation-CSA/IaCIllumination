@@ -1,4 +1,4 @@
-group_name = "example-resource-group"
+
 location = "East US"
 tags = {
   environment = "development"
@@ -31,5 +31,5 @@ os_disk_storage_account_type = "Premium_LRS"
 source_image_publisher = "MicrosoftWindowsServer"
 source_image_offer = "WindowsServer"
 source_image_sku = "2016-Datacenter"
-version = "latest"
+source_image_version = "latest"
 
