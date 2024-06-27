@@ -26,11 +26,12 @@ module "Subnet" {
     depends_on = [ module.VirtualNetwork ]
 }
 module "ip" {
-    source = "../../../modules/azure/ip"
+    source = "../../../modules/azure/publicIP"
     public_ip_name = var.public_ip_name
     location = var.location
     resource_group_name = var.group_name
-    public_ip_allocation_method = var.public_ip_allocation_method
+    idle_timeout_in_minutes = var.private_ip_address_allocation
+    allocation_method = var.public_ip_allocation_method
     tags = var.tags
     depends_on = [ module.azure-resource-group ]
   
@@ -49,11 +50,11 @@ module "nic" {
   
 }
 module "vm" {
-    source = "../../../modules/azure/vm"
-    virtaul_machine_name = var.virtual_machine_name
+    source = "../../../modules/azure/virtualmachine"
+    virtual_machine_name =  var.virtual_machine_name
     location = var.location
     resource_group_name = var.group_name
-    vm_size = var.vm_size
+    size =  var.vm_size
     admin_username = var.admin_username
     admin_password = var.admin_password
     network_interface_ids = [module.nic.nic_id]
@@ -62,6 +63,7 @@ module "vm" {
     source_image_publisher = var.source_image_publisher
     source_image_offer = var.source_image_offer
     source_image_sku = var.source_image_sku
+    source_image_version = var.version
     tags = var.tags
     depends_on = [ module.nic ]
 }

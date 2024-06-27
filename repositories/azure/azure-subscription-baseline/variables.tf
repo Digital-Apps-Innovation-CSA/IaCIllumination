@@ -102,3 +102,9 @@ variable "source_image_sku" {
     type        = string
     description = "SKU of the source image"
 }
+
+variable "version" {
+    type        = string
+    description = "Version of the source image"
+  
+}
