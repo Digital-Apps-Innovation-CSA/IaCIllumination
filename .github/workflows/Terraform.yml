@@ -48,7 +48,10 @@ jobs:
       working-directory: ${{ inputs.workingDirectory }}
       run: |
         export exitcode=0
-        terraform state list | cut -f 1 -d '[' | xargs -L 1  terraform state rm
+        $resources = terraform state list
+        for($i=0;$i -lt $resources.Length; $i=$i+1){
+          terraform state rm $resources[$i]
+        }
         terraform plan -var user="rvr0212" -var-file="${{ inputs.evironmetTerraform }}/auto.tfvars" -detailed-exitcode -no-color -out tfplan || export exitcode=$?
 
         echo "exitcode=$exitcode" >> $GITHUB_OUTPUT
